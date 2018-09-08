@@ -4,7 +4,7 @@ pipeline {
     stages {
     	stage('Clean') {
     		steps {
-    			withAnt() {
+    			withAnt(installation: 'AntPipeline') {
 	        		echo 'Cleaning..'
 	        		sh 'ant clean'
 	        	}	
@@ -12,7 +12,7 @@ pipeline {
     	}
         stage('Build') {
         	 steps {
-	        	withAnt() {
+	        	withAnt(installation: 'AntPipeline') {
 	        		echo 'Compiling..'
 	        		sh 'ant compile'
 	            }
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-            	withAnt() {
+            	withAnt(installation: 'AntPipeline') {
 	        		echo 'Test..'
 	        		sh 'ant run'
 	        	}	
