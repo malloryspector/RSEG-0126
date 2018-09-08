@@ -3,22 +3,28 @@
     <property name="srcdir"     value="src"/>
     <property name="builddir"   value="build"/>
     <property name="classesdir" value="${builddir}/classes"/>
+    <property name="jardir"     value="${builddir}/jar"/>
     <property name="mainclass"  value="main.SieveOfErastosthenes"/>
+	<property name="projectname" value="SieveOfErastosthenes"/>
 
     <target name="clean">
         <delete dir="${builddir}"/>
     </target>
 
-    <target name="compile" depends="clean">
+    <target name="compile">
         <mkdir dir="${classesdir}"/>
         <javac srcdir="${srcdir}" destdir="${classesdir}" includeantruntime="false"/>
+        <mkdir dir="${jardir}"/>
+        <jar destfile="${jardir}/${projectname}.jar" basedir="${classesdir}">
+            <manifest>
+                <attribute name="Main-Class" value="${mainclass}"/>
+            </manifest>
+        </jar>
     </target>
 
-    <target name="run" depends="compile">
-        <java classname="${mainclass}" fork="true">
-        	<classpath>
-        		<pathelement path="${classesdir}"/>
-        	</classpath>
-        </java>	
+    <target name="run">
+        <java jar="${jardir}/${projectname}.jar" fork="true">
+        	<arg value="30"/>
+    	</java>
     </target>
 </project>

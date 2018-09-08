@@ -9,10 +9,16 @@ public class SieveOfErastosthenes {
 	public static void main(String[] args) {
 		// prompt the user for the maximum integer to check
 		System.out.println("Please enter the maximum integer to check: ");
-		Scanner s = new Scanner(System.in);
-		int maxInt = s.nextInt();
-		s.close();
-		
+		int maxInt = 2;
+		if (args.length > 0) {
+			maxInt = Integer.parseInt(args[0]);
+		} else {
+			Scanner s = new Scanner(System.in);
+			maxInt = s.nextInt();
+			s.close();
+		}
+
+
 		// run the algorithm
 		Map<Integer, Boolean> numbers = RunAlgorithm(maxInt);
 		
