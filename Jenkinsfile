@@ -4,20 +4,26 @@ pipeline {
     stages {
     	stage('Clean') {
     		steps {
-        		echo 'Cleaning..'
-        		sh 'ant clean'
+    			withAnt() {
+	        		echo 'Cleaning..'
+	        		sh 'ant clean'
+	        	}	
             }
     	}
         stage('Build') {
-            steps {
-        		echo 'Compiling..'
-        		sh 'ant compile'
-            }
+        	 steps {
+	        	withAnt() {
+	        		echo 'Compiling..'
+	        		sh 'ant compile'
+	            }
+        	}
         }
         stage('Test') {
             steps {
-        		echo 'Test..'
-        		sh 'ant run'
+            	withAnt() {
+	        		echo 'Test..'
+	        		sh 'ant run'
+	        	}	
             }
         }
     }
