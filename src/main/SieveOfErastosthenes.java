@@ -12,6 +12,7 @@ public class SieveOfErastosthenes {
 		int maxInt = 2;
 		if (args.length > 0) {
 			maxInt = Integer.parseInt(args[0]);
+			System.out.println(maxInt);
 		} else {
 			Scanner s = new Scanner(System.in);
 			maxInt = s.nextInt();
