@@ -24,7 +24,7 @@ public class SieveOfErastosthenes {
 		Map<Integer, Boolean> numbers = RunAlgorithm(maxInt);
 		
 		// display all prime numbers less than or equal to maximum integer
-		System.out.print("Prime Numbers: ")
+		System.out.print("Prime Numbers: ");
 		for (int j = 2; j < maxInt + 1; j++) {
 			if (numbers.get(j) == true) {
 				System.out.printf("%d ", j);
